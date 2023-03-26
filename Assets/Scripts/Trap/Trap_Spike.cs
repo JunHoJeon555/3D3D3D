@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class Trap_Spike : Trap_Base
 {
-
     Animator anim;
 
-
-    private void Awaek()
+    private void Awake()
     {
-       anim = GetComponent<Animator>();
+        anim = GetComponent<Animator>();
     }
 
     protected override void OnTrapActivate(GameObject target)
@@ -18,5 +16,4 @@ public class Trap_Spike : Trap_Base
         base.OnTrapActivate(target);
         anim.SetTrigger("Activate");
     }
-
 }

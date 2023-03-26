@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: TrapForceAOC
+  m_Controller: {fileID: 9100000, guid: 8eee0c60da8fd1d47983e7b58e54d500, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e61fd58d62c9f30479e37b82e541a086, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: e61fd58d62c9f30479e37b82e541a086, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 689d717e504c3594a83dfcf393881544, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 09b42802c8ad0cd4185a6189badf40c5, type: 2}
