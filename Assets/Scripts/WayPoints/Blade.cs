@@ -48,7 +48,7 @@ public class Blade : WayPointUser
     protected override void SetTarget(Transform target)
     {
         base.SetTarget(target);
-        transform.LookAt(this.target);  //목적지 바라보기
+        transform.LookAt(target);  //목적지 바라보기
     }
 
 

@@ -21,6 +21,8 @@ public class UseSwitch : MonoBehaviour, IUserbleObject
     /// </summary>
     bool isUserd = false;
 
+    public bool IsDirectUse => true;
+
     void Awake() 
     { 
         anim= GetComponent<Animator>();

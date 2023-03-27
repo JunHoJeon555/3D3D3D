@@ -19,6 +19,8 @@ public class DoorManual : DoorBase , IUserbleObject
 
     TextMeshPro text;
 
+    public bool IsDirectUse => true;
+
     protected override void Awake()
     {
         base.Awake();

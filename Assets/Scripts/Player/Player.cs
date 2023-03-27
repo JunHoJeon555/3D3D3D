@@ -164,11 +164,12 @@ public class Player : MonoBehaviour
         {
             OnGround(); //찾기 함수 실행
         }
+
         else if(collision.gameObject.CompareTag("Platform"))
         {
-            OnGround();
             Platform platform = collision.gameObject.GetComponent<Platform>();
             platform.OnMove += OnRideMovingObject;
+            OnGround();     //바닥에 
         }
     }
 
@@ -278,7 +279,10 @@ public class Player : MonoBehaviour
     /// <param name="obj">사용할 오브젝트</param>
     private void UseObject(IUserbleObject obj)
     {
-        obj.Used(); //사용
+        if (obj.IsDirectUse)
+        {
+            obj.Used(); // 사용
+        }
     }
 
 
@@ -337,6 +341,10 @@ public class Player : MonoBehaviour
         currentMoveSpeed= moveSpeed;
     }
 
+    /// <summary>
+    /// 플레이어의 움직임이 플랫폼의 움직임을 더해준다/
+    /// </summary>
+    /// <param name="delta"></param>
     private void OnRideMovingObject(Vector3 delta)
     {
         rigid.MovePosition(rigid.position + delta);

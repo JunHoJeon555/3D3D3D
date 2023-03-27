@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using System;
+using UnityEngine.Video;
 
 public class WayPointUser : MonoBehaviour
 {
     /// <summary>
-    /// 이 오브젝트가 움직일 웨이포인트
+    /// 이 오브젝트가 움직일 웨이포인트(반드시 설정되어야 한다)
     /// </summary>
     public WayPoints targetWaypoints;
     
@@ -43,10 +44,9 @@ public class WayPointUser : MonoBehaviour
 
     
  
-    private void Start()
+    protected virtual void Start()
     {
-        SetTarget(targetWaypoints.CurrentWayPoint); //첫번째 웨이 포인트
-        
+        SetTarget(targetWaypoints.CurrentWayPoint); //첫번째 웨이 포인트       
     }
 
     /// <summary>
@@ -60,7 +60,7 @@ public class WayPointUser : MonoBehaviour
 
 
 
-    protected void Move()
+    protected virtual void Move()
     {
         moveDelta = Time.fixedDeltaTime * moveSpeed * moveDir;  //이동방향대로 움직인다/.
         transform.Translate(moveDelta, Space.World); //이동
@@ -70,8 +70,9 @@ public class WayPointUser : MonoBehaviour
         if ( (target.position - transform.position).sqrMagnitude < 0.01f) // 거리가 0.01보다 작을 때
         {
             //도착
-            SetTarget(targetWaypoints.GetNextWayPoint());   //도착했으면 다음웨이포인트 지접ㅁ 가져와서 설정하기
+            SetTarget(targetWaypoints.GetNextWayPoint());   //도착했으면 다음웨이포인트 직접 가져와서 설정하기
             moveDelta = Vector3.zero;
+            OnArrived();
         }
         OnMove?.Invoke(moveDelta);
     }
@@ -90,5 +91,8 @@ public class WayPointUser : MonoBehaviour
     }
         
     
+    protected virtual void OnArrived()
+    {
 
+    }
 }
