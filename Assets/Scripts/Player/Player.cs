@@ -164,7 +164,26 @@ public class Player : MonoBehaviour
         {
             OnGround(); //찾기 함수 실행
         }
+        else if(collision.gameObject.CompareTag("Platform"))
+        {
+            OnGround();
+            Platform platform = collision.gameObject.GetComponent<Platform>();
+            platform.OnMove += OnRideMovingObject;
+        }
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Platform"))
+        {
+            Platform platform = collision.gameObject.GetComponent<Platform>();
+
+            platform.OnMove -= OnRideMovingObject;
+           
+        }
+    }
+
+
 
 
     //private void LateUpdate() // 카메라 같은거 처리할 때 아니면 모든 업데이트를 사용할 때 마지막으로 계산을 해줘야 할 때
@@ -316,6 +335,11 @@ public class Player : MonoBehaviour
     public void ResetMoveSpeed()
     {
         currentMoveSpeed= moveSpeed;
+    }
+
+    private void OnRideMovingObject(Vector3 delta)
+    {
+        rigid.MovePosition(rigid.position + delta);
     }
 
 }

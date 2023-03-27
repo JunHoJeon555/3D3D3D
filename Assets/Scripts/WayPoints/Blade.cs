@@ -6,8 +6,6 @@ using UnityEngine;
 public class Blade : WayPointUser
 {
 
-    
-;
  
     /// <summary>
     /// 칼날
@@ -28,9 +26,13 @@ public class Blade : WayPointUser
     private void Update()
     { 
         bladeMesh.Rotate(Time.deltaTime * spinSpeed * Vector3.right);   //톱날 회전
-        Move();
+        
     }
 
+    private void FixedUpdate()
+    {
+        Move();
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -43,18 +45,11 @@ public class Blade : WayPointUser
         
     }
 
-
-    /// <summary>
-    /// 다음 웨이 포인트 지정하는 함수
-    /// </summary>
-    /// <param name="target"></param>
-    private void SetTarget(Transform target)
-    { 
-        this.target = target;           //목적지 설정
+    protected override void SetTarget(Transform target)
+    {
+        base.SetTarget(target);
         transform.LookAt(this.target);  //목적지 바라보기
-    
     }
-        
-    
+
 
 }
