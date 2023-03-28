@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8837925316678307300}
   - component: {fileID: 8837925316678307302}
   - component: {fileID: 8837925316678307297}
+  - component: {fileID: 4821620768807538553}
   m_Layer: 0
   m_Name: Platform
   m_TagString: Platform
@@ -79,6 +80,19 @@ MonoBehaviour:
   targetWaypoints: {fileID: 0}
   moveSpeed: 5
   spinSpeed: 720
+--- !u!65 &4821620768807538553
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8837925316678307301}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 0.1, z: 1}
+  m_Center: {x: 0, y: 0.5, z: 0}
 --- !u!1 &8837925316914008296
 GameObject:
   m_ObjectHideFlags: 0
