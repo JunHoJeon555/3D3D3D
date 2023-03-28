@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class VirtualButton : MonoBehaviour , IPointerClickHandler
+public class VirtualButton : MonoBehaviour, IPointerClickHandler
 {
     public Action onClick;
     Image coolDown;
@@ -14,9 +14,8 @@ public class VirtualButton : MonoBehaviour , IPointerClickHandler
     void Awake()
     {
         coolDown = transform.GetChild(0).GetChild(1).GetComponent<Image>();
-        coolDown.fillAmount = 0;        //ÄÄÆ÷³ÍÆ®¿¡ÀÖ´Â filledÀÇ ¼³Á¤°ª
+        coolDown.fillAmount = 0;
     }
-
 
     public void OnPointerClick(PointerEventData eventData)
     {
@@ -24,11 +23,12 @@ public class VirtualButton : MonoBehaviour , IPointerClickHandler
     }
 
     /// <summary>
-    /// Äğ´Ù¿î ÀÌ¹ÌÁöÀÇ fillÁ¤µµ¸¦ °»½ÅÇÏ´Â ÇÔ¼ö 
+    /// ì¿¨ë‹¤ìš´ ì´ë¯¸ì§€ì˜ fill ì •ë„ë¥¼ ê°±ì‹ í•˜ëŠ” í•¨ìˆ˜
     /// </summary>
-    /// <param name="ratio"></param>
+    /// <param name="ratio">ìƒˆ ë¹„ìœ¨</param>
     public void RefreshCoolTime(float ratio)
     {
         coolDown.fillAmount = ratio;
+        
     }
 }

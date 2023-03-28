@@ -97,14 +97,12 @@ public class Player : MonoBehaviour
         get => jumpCoolTime;
         set
         {
-             jumpCoolTime = value;
-            if (jumpCoolTime < 0) 
+            jumpCoolTime = value;
+            if (jumpCoolTime < 0)
             {
                 jumpCoolTime = 0;
             }
-
-            onJumpCoolTimeChange?.Invoke(jumpCoolTime/jumpCoolTimeMax);     //쿨타임 이 변경 되면 비율을 알려줌
-            
+            onJumpCoolTimeChange?.Invoke(jumpCoolTime / jumpCoolTimeMax);   // 쿨타임이 변경되면 비율을 알려줌
         }
     }
 
@@ -157,7 +155,7 @@ public class Player : MonoBehaviour
         isAlive = true;
         //lifeTime = lifeTimeMax; //변수값을 변경하는 것
         LifeTime = lifeTimeMax;                     //프로퍼티를 실행하는 것
-        jumpCoolTime= 0f;            //변경될때마다 알려된다
+        JumpCoolTime= 0f;             //변경될때마다 알려된다
 
         ResetMoveSpeed(); //처음 속도 지정
     }
@@ -180,7 +178,7 @@ public class Player : MonoBehaviour
 
         //가상 버튼 연결 
         VirtualButton button = FindObjectOfType<VirtualButton>();
-        button.onClick += Jump;                                 //가상 버튼이 눌려지면 점프
+        button.onClick += Jump;                                  // 가상 버튼이 눌려지면 점프
         onJumpCoolTimeChange += button.RefreshCoolTime;         //점프 쿨타임이 변하면 버튼의 쿨타임 표시 변경
     }
 
