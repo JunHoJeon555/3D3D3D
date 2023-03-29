@@ -14,33 +14,19 @@ public class FollowCamera : MonoBehaviour
         if(target == null)
         {
             Player player =  FindObjectOfType<Player>();
-            target = player.transform;
+            target = player.transform.GetChild(7);
         }
 
         offset = transform.position - target.position;
+        lenght = offset.magnitude; //ë£¨íŠ¸ì—°ì‚°ì´ì—¬ì„œ ì ˆëŒ€ í”¼í•´ë´í•˜ëŠ”ê²ƒ
     }
 
 
 
-    //LateUpdate = ¸ğµç Update ÇÔ¼ö°¡ È£ÃâµÈ ÈÄ, ¸¶Áö¸·À¸·Î È£ÃâµË´Ï´Ù 
-    //¿òÁ÷ÀÓÀº Fixed¾÷µ¥ÀÌÆ®´Ï fixedUpdate·Î ¹Ù²ãÁÖ¾ú´Ù.
+    //LateUpdate = ëª¨ë“  Update í•¨ìˆ˜ê°€ í˜¸ì¶œëœ í›„, ë§ˆì§€ë§‰ìœ¼ë¡œ í˜¸ì¶œë©ë‹ˆë‹¤ 
+    //ì›€ì§ì„ì€ Fixedì—…ë°ì´íŠ¸ë‹ˆ fixedUpdateë¡œ ë°”ê¿”ì£¼ì—ˆë‹¤.
     private void FixedUpdate()
     {
-        //transform.position = target.position + offset;
-
-        //ÇÃ·¹ÀÌ¾î forward¿Í Ä«¸Ş¶óÀÇ forward¸¦ ÀÏÄ¡½ÃÄÑ¾ßÇÑ´Ù.(YÃà¸¸ °í·Á)
-        //Vector3 camDir = transform.forward;
-        //camDir.y = 0f;
-
-        //Quaternion camRotate = Quaternion.FromToRotation(camDir, target.forward);
-
-        //transform.position = target.position + camRotate * offset;
-
-        //transform.rotation *=Quaternion.FromToRotation(camDir, target.forward);
-        ////Vector3.Angle(target.forward, transform.forward);
-        
-        
-        
 
 
 
@@ -50,10 +36,18 @@ public class FollowCamera : MonoBehaviour
         transform.rotation = Quaternion.Slerp(
             transform.rotation,
             Quaternion.LookRotation(target.position - transform.position),
-            Time.fixedDeltaTime * speed
+            Time.fixedDeltaTime * speed     ///ã…‚ê°„
             );
 
 
+        transform.LookAt(target);           //ì¹´ë©”ë¼ê°€ ëª©í‘œì§€ì  ë°”ë¼ë³´ê¸° 
+
+
+        Ray ray = new Bay(target, tramsformm.position - target.position);
+        if (Physics.Raycast(ray, out RaycastHit, lengh))
+        {
+
+        }
 
     }
 
