@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Rendering;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class FollowCamera : MonoBehaviour
 {
     public Transform target;
     public float speed = 3f;
+    float lenght;
+
     Vector3 offset;
 
     private void Start()
@@ -43,10 +46,10 @@ public class FollowCamera : MonoBehaviour
         transform.LookAt(target);           //카메라가 목표지점 바라보기 
 
 
-        Ray ray = new Bay(target, tramsformm.position - target.position);
-        if (Physics.Raycast(ray, out RaycastHit, lengh))
+        Ray ray = new Ray(target.position, transform.position - target.position);       //target에서 카메라로 나가는 레이
+        if (Physics.Raycast(ray, out RaycastHit hit, lenght))
         {
-
+            transform.position = hit.point;
         }
 
     }
